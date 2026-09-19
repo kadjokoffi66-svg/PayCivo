@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071326">
+  <meta name="description" content="PayCivo - transferts Mobile Money">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg">
+  <title>PayCivo</title>
+  <style>
+    :root{--bg:#071326;--card:#0e1d35;--card2:#122542;--green:#63ff22;--green2:#b4ff21;--text:#fff;--muted:#aebbd0;--line:#233652;--danger:#ff5e73}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    body{background:radial-gradient(circle at 80% 10%,#10274a 0,#071326 40%,#050e1c 100%);overflow-x:hidden}
+    button,input,select{font:inherit}.app{min-height:100vh;max-width:520px;margin:auto;padding:22px 18px 90px;position:relative}
+    .brand{display:flex;align-items:center;gap:10px;margin:8px 0 32px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#12d93c,#b6ff20);display:grid;place-items:center;color:#06111f;font-weight:1000;font-size:24px;box-shadow:0 0 28px #5cff2730}.brand b{font-size:26px}.brand b span{color:var(--green)}
+    .screen{display:none;animation:fade .22s ease}.screen.active{display:block}@keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+    h1{font-size:43px;line-height:1.03;margin:0 0 16px;letter-spacing:-1.7px}.hero h1 span{color:var(--green)}p{color:var(--muted);line-height:1.55}
+    .hero-art{height:250px;margin:8px -18px 20px;position:relative;overflow:hidden}.phone{position:absolute;right:35px;top:25px;width:210px;height:290px;border:8px solid #1b2b43;border-radius:34px;background:#0c1b31;transform:rotate(-8deg);box-shadow:0 30px 70px #0008}.phone .balance{margin:25px 16px;background:#1a3355;border-radius:20px;padding:18px}.balance small{color:#a9bad2}.balance strong{display:block;font-size:25px;margin-top:7px}.orbit{position:absolute;width:250px;height:160px;border:3px solid var(--green);border-radius:50%;right:5px;top:45px;transform:rotate(-15deg);opacity:.8}.badge{position:absolute;padding:11px 14px;border-radius:14px;font-weight:800;box-shadow:0 12px 30px #0005}.orange{background:#ff7900;right:15px;top:5px}.mtn{background:#ffd500;color:#111;right:0;bottom:35px}.moov{background:#16b84e;left:35px;bottom:5px}.wave{background:#1594e8;left:120px;bottom:-2px}
+    .benefits{display:grid;gap:14px;margin:22px 0 28px}.benefit{display:flex;gap:14px;align-items:center}.ico{width:42px;height:42px;border-radius:14px;background:#0b2630;display:grid;place-items:center;color:var(--green);font-size:21px}.benefit b{display:block}.benefit span{font-size:13px;color:var(--muted)}
+    .btn{width:100%;border:0;border-radius:22px;padding:17px 20px;font-weight:850;font-size:17px;cursor:pointer}.primary{background:linear-gradient(90deg,#39ee28,#baff24);color:#06111a;box-shadow:0 12px 35px #64ff2440}.secondary{margin-top:12px;background:transparent;color:#fff;border:1px solid #dbe6f6;padding:16px}.ghost{background:#10213a;color:#fff;border:1px solid var(--line)}
+    .card{background:linear-gradient(145deg,#10213a,#0a1729);border:1px solid var(--line);border-radius:24px;padding:20px;margin:16px 0;box-shadow:0 20px 60px #0002}.label{display:block;font-size:13px;color:var(--muted);margin:0 0 8px}.input,.select{width:100%;background:#08172b;border:1px solid #2a4160;color:#fff;border-radius:15px;padding:15px;outline:none}.input:focus,.select:focus{border-color:var(--green)}.row{display:flex;gap:10px}.row>*{flex:1}.otp{letter-spacing:10px;text-align:center;font-size:25px}.back{background:none;border:0;color:var(--muted);padding:4px 0;margin-bottom:18px;cursor:pointer}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#39ee28,#6c4cff);display:grid;place-items:center;color:#071326;font-weight:900}
+    .balance-card{padding:24px;border-radius:26px;background:linear-gradient(135deg,#15355d,#0c1d35);border:1px solid #294665}.balance-card strong{display:block;font-size:35px;margin-top:7px}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.quick button{border:0;background:#10233e;color:#fff;border-radius:18px;padding:15px 8px;min-height:90px}.quick i{display:block;font-style:normal;font-size:24px;margin-bottom:8px}.list{display:grid;gap:10px}.item{display:flex;align-items:center;justify-content:space-between;padding:15px;background:#0d1e34;border:1px solid #1d324c;border-radius:17px}.ok{color:var(--green)}.err{color:var(--danger)}.nav{position:fixed;bottom:0;left:0;right:0;margin:auto;max-width:520px;background:#071326ee;backdrop-filter:blur(14px);border-top:1px solid #1d3049;display:grid;grid-template-columns:repeat(4,1fr);padding:9px 10px calc(9px + env(safe-area-inset-bottom));z-index:10}.nav button{border:0;background:none;color:#8ea0b8;padding:8px 2px;font-size:11px}.nav button.active{color:var(--green)}.nav i{display:block;font-style:normal;font-size:21px;margin-bottom:2px}.successIcon{width:90px;height:90px;border-radius:50%;display:grid;place-items:center;margin:auto;background:linear-gradient(135deg,#39ee28,#baff24);color:#06111a;font-size:52px;font-weight:900;box-shadow:0 15px 50px #64ff2440}.right{text-align:right}.status{display:block;font-size:11px;color:var(--muted);margin-top:4px}.toast{position:fixed;left:18px;right:18px;bottom:85px;max-width:484px;margin:auto;padding:14px 16px;border-radius:14px;background:#132946;border:1px solid #2b4668;display:none;z-index:20}.small{font-size:13px;color:var(--muted)}.center{text-align:center}.danger{color:#ff7c8c}
+  </style>
+</head>
+<body>
+<div class="app">
+  <div id="toast" class="toast"></div>
+
+  <section id="welcome" class="screen active hero">
+    <div class="brand"><div class="logo">P</div><b>Pay<span>Civo</span></b></div>
+    <h1>Envoyez de l'argent <span>rapidement</span> et simplement</h1>
+    <p>Recharge un numéro Mobile Money rapidement, avec un parcours de paiement sécurisé.</p>
+    <div class="hero-art">
+      <div class="orbit"></div><div class="phone"><div class="balance"><small>Solde disponible</small><strong>25 000 FCFA</strong></div></div>
+      <div class="badge orange">orange</div><div class="badge mtn">MTN</div><div class="badge moov">moov</div><div class="badge wave">wave</div>
+    </div>
+    <div class="benefits">
+      <div class="benefit"><div class="ico">⚡</div><div><b>Recharges Mobile Money</b><span>En quelques secondes</span></div></div>
+      <div class="benefit"><div class="ico">✓</div><div><b>Simple et sécurisé</b><span>Votre compte est protégé</span></div></div>
+      <div class="benefit"><div class="ico">▣</div><div><b>Mobile Money</b><span>Orange, MTN, Moov et Wave</span></div></div>
+    </div>
+    <button class="btn primary" onclick="go('register')">Créer un compte →</button>
+    <button class="btn secondary" onclick="go('login')">Se connecter</button>
+  </section>
+
+  <section id="register" class="screen">
+    <button class="back" onclick="go('welcome')">← Retour</button>
+    <div class="brand"><div class="logo">P</div><b>Pay<span>Civo</span></b></div>
+    <h1>Créer un compte</h1><p>Entre ton numéro ivoirien pour recevoir ton code de vérification.</p>
+    <div class="card">
+      <label class="label">Numéro de téléphone</label>
+      <div class="row"><input id="phone" class="input" inputmode="numeric" placeholder="05 00 00 00 00"></div>
+      <p id="registerMsg" class="small"></p>
+      <button class="btn primary" onclick="requestOtp()">Recevoir le code</button>
+    </div>
+  </section>
+
+  <section id="otp" class="screen">
+    <button class="back" onclick="go('register')">← Modifier le numéro</button>
+    <h1>Vérifie ton numéro</h1><p>Entre le code à 6 chiffres reçu par SMS.</p>
+    <div class="card center">
+      <input id="otpCode" maxlength="8" class="input otp" inputmode="numeric" placeholder="000000">
+      <p id="otpMsg" class="small"></p>
+      <button class="btn primary" onclick="verifyOtp()">Vérifier</button>
+      <button class="btn secondary" onclick="requestOtp()">Renvoyer le code</button>
+    </div>
+  </section>
+
+  <section id="login" class="screen">
+    <button class="back" onclick="go('welcome')">← Retour</button>
+    <h1>Se connecter</h1><p>Entre ton numéro pour recevoir un nouveau code de connexion.</p>
+    <div class="card"><label class="label">Numéro</label><input id="loginPhone" class="input" inputmode="numeric" placeholder="05 00 00 00 00"><p id="loginMsg" class="small"></p><button class="btn primary" onclick="loginRequest()">Continuer</button></div>
+  </section>
+
+  <section id="dashboard" class="screen">
+    <div class="topbar"><div class="brand" style="margin:0"><div class="logo">P</div><b>Pay<span>Civo</span></b></div><div class="avatar" id="avatar">P</div></div>
+    <div class="balance-card"><span class="small">Solde disponible</span><strong id="balance">0 FCFA</strong><span class="small">Compte sécurisé</span></div>
+    <div class="quick"><button onclick="go('send')"><i>➤</i>Envoyer</button><button onclick="go('receive')"><i>↓</i>Recevoir</button><button onclick="go('history')"><i>☷</i>Historique</button></div>
+    <div class="card"><b>Bienvenue 👋</b><p class="small">Ton espace PayCivo est prêt. Les transferts réels seront activés après configuration de SasPay côté serveur.</p></div>
+  </section>
+
+  <section id="send" class="screen">
+    <button class="back" onclick="go('dashboard')">← Retour</button><h1>Envoyer de l'argent</h1><p>Choisis le réseau et indique le numéro du bénéficiaire.</p>
+    <div class="card">
+      <label class="label">Opérateur</label>
+      <select id="operator" class="select"><option value="orange_ci">Orange Money</option><option value="mtn_ci">MTN MoMo</option><option value="moov_ci">Moov Money</option><option value="wave_ci">Wave</option></select>
+      <label class="label" style="margin-top:14px">Numéro du bénéficiaire</label><input id="recipient" class="input" inputmode="numeric" placeholder="05 00 00 00 00">
+      <label class="label" style="margin-top:14px">Montant (FCFA)</label><input id="amount" class="input" inputmode="numeric" type="number" min="100" placeholder="1000">
+      <label class="label" style="margin-top:14px">Motif (facultatif)</label><input id="description" class="input" placeholder="Transfert">
+      <p id="sendMsg" class="small"></p><button class="btn primary" onclick="prepareRecharge()">Payer et recharger →</button>
+    </div>
+  </section>
+
+  <section id="payment" class="screen">
+    <button class="back" onclick="go('send')">← Modifier</button>
+    <h1>Confirmer le paiement</h1><p id="payStatus">Préparation...</p>
+    <div class="card center"><h2 id="orderInfo">—</h2><p class="small">Après le paiement, PayCivo déclenchera la recharge du bénéficiaire.</p><button class="btn primary" onclick="refreshOrder()">Vérifier le statut</button><button id="demoBtn" class="btn secondary" onclick="confirmDemo()">Simuler le paiement (démo)</button></div>
+  </section>
+
+  <section id="success" class="screen">
+    <div class="center" style="padding-top:90px"><div class="successIcon">✓</div><h1>Recharge réussie</h1><p>Le bénéficiaire a été traité par PayCivo.</p><button class="btn primary" onclick="go('dashboard')">Retour à l'accueil</button><button class="btn secondary" onclick="go('history')">Voir l'historique</button></div>
+  </section>
+
+  <section id="receive" class="screen">
+    <button class="back" onclick="go('dashboard')">← Retour</button><h1>Recevoir</h1><p>Partage ton numéro PayCivo pour recevoir un transfert.</p>
+    <div class="card center"><div class="avatar" style="margin:auto;font-size:25px" id="receiveAvatar">P</div><h2 id="receivePhone">—</h2><p class="small">Demande à l'expéditeur de vérifier le numéro avant d'envoyer.</p><button class="btn primary" onclick="copyPhone()">Copier mon numéro</button></div>
+  </section>
+
+  <section id="history" class="screen">
+    <button class="back" onclick="go('dashboard')">← Retour</button><h1>Historique</h1><div id="historyList" class="list"></div>
+  </section>
+
+  <section id="profile" class="screen">
+    <button class="back" onclick="go('dashboard')">← Retour</button><h1>Mon profil</h1>
+    <div class="card"><div class="center"><div class="avatar" style="margin:auto" id="profileAvatar">P</div><h2 id="profileName">PayCivo</h2><p id="profilePhone" class="small">—</p></div><button class="btn ghost" onclick="logout()">Se déconnecter</button></div>
+  </section>
+
+  <nav id="nav" class="nav" style="display:none">
+    <button data-screen="dashboard" onclick="go('dashboard')"><i>⌂</i>Accueil</button>
+    <button data-screen="send" onclick="go('send')"><i>➤</i>Envoyer</button>
+    <button data-screen="history" onclick="go('history')"><i>☷</i>Historique</button>
+    <button data-screen="profile" onclick="go('profile')"><i>●</i>Profil</button>
+  </nav>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

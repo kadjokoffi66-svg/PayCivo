@@ -1,0 +1,10 @@
+{
+  "name": "PayCivo",
+  "short_name": "PayCivo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071326",
+  "theme_color": "#071326",
+  "description": "Transferts Mobile Money",
+  "icons": [{"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
