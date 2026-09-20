@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "PayCivo Demo",
+    "slug": "paycivo-demo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {"backgroundColor":"#071326"},
+    "android": {
+      "package": "com.paycivo.demo",
+      "versionCode": 1,
+      "adaptiveIcon": {"backgroundColor":"#071326"}
+    },
+    "extra": {"demoCode":"1234"}
+  }
+}
